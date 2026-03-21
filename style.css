@@ -1,24 +1,400 @@
-h1{
-	text-align:center;
-	color:blue;
-	font-size:40px;
+/* ============================================
+   ARCANE ODYSSEY FANBASE - CSS MODERNISÉ
+   Thème: Epic Fantasy Nautical & Arcane
+   ============================================ */
+
+/* === IMPORTS POLICES === */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+/* === VARIABLES CSS === */
+:root {
+    --color-bg-deep: #0a0e14;
+    --color-bg-card: #12171f;
+    --color-bg-card-hover: #1a2030;
+    --color-accent-gold: #d4af37;
+    --color-accent-gold-glow: rgba(212, 175, 55, 0.4);
+    --color-accent-blue: #4a90d9;
+    --color-accent-blue-glow: rgba(74, 144, 217, 0.3);
+    --color-text-primary: #f5f0e1;
+    --color-text-secondary: #c9c4b5;
+    --color-border-gold: rgba(212, 175, 55, 0.5);
+    --color-border-blue: rgba(74, 144, 217, 0.4);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Nunito Sans', sans-serif;
+    --container-max: 1000px;
+    --border-radius: 12px;
+    --transition-smooth: 0.3s ease;
 }
-h2{
-	color:white;
-	background-color:black;
-	padding-left:20px
-	padding-top:5px;
-	padding-bottom:5px;
-	border-radius:10px;
+
+/* === RESET & BASE === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-p{
-	font-family:Verdana;
-	margin-left:20px;
-	margin-right:100px;
-	color:white;
+
+html {
+    scroll-behavior: smooth;
 }
-body{
-	width:800px;
-	margin:auto;
-	background-color:rgb(0,0,0);
+
+/* === BODY - DÉGRADÉ SUBTIL EN ARRIÈRE-PLAN === */
+body {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 20px 30px 60px;
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    
+    /* Dégradé subtil de fond - effet mystique */
+    background: 
+        /* Couche 1: Lueur arcane subtile en haut */
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74, 144, 217, 0.08) 0%, transparent 50%),
+        /* Couche 2: Légère lueur dorée en bas à gauche */
+        radial-gradient(ellipse 60% 40% at 10% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        /* Couche 3: Dégradé principal bleu profond */
+        linear-gradient(180deg, 
+            #0a0e14 0%, 
+            #0d1219 25%, 
+            #0f151d 50%, 
+            #0d1219 75%, 
+            #0a0e14 100%
+        );
+    
+    background-color: var(--color-bg-deep);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* === TITRES === */
+h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-accent-gold);
+    text-shadow: 
+        0 0 20px var(--color-accent-gold-glow),
+        0 0 40px rgba(212, 175, 55, 0.2);
+    margin-bottom: 30px;
+    padding: 20px 0;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+    margin: 15px auto 0;
+}
+
+h1 a {
+    color: var(--color-accent-gold);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+h1 a:hover {
+    color: #e8c84a;
+    text-shadow: 
+        0 0 30px var(--color-accent-gold-glow),
+        0 0 60px rgba(212, 175, 55, 0.3);
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, #1a2030 100%);
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent-gold);
+    margin: 40px 0 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* === PARAGRAPHES === */
+p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 20px;
+    text-align: justify;
+}
+
+p strong {
+    color: var(--color-accent-gold);
+    font-weight: 600;
+}
+
+/* === LISTES - ICÔNES CERCLES MAGIQUES === */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Cercle magique personnalisé comme puce */
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    
+    /* Cercle externe avec bordure dorée */
+    border: 2px solid var(--color-accent-gold);
+    border-radius: 50%;
+    
+    /* Point central lumineux */
+    background: 
+        radial-gradient(circle at center, 
+            var(--color-accent-gold) 0%, 
+            var(--color-accent-gold) 25%, 
+            transparent 25%, 
+            transparent 100%
+        );
+    
+    /* Effet de lueur magique */
+    box-shadow: 
+        0 0 8px var(--color-accent-gold-glow),
+        0 0 15px rgba(212, 175, 55, 0.2),
+        inset 0 0 4px rgba(212, 175, 55, 0.3);
+    
+    /* Animation subtile de pulsation */
+    animation: magicPulse 2s ease-in-out infinite;
+}
+
+/* Variante pour sous-listes - cercles bleus */
+ul ul li::before {
+    border-color: var(--color-accent-blue);
+    background: 
+        radial-gradient(circle at center, 
+            var(--color-accent-blue) 0%, 
+            var(--color-accent-blue) 25%, 
+            transparent 25%, 
+            transparent 100%
+        );
+    box-shadow: 
+        0 0 8px var(--color-accent-blue-glow),
+        0 0 15px rgba(74, 144, 217, 0.2),
+        inset 0 0 4px rgba(74, 144, 217, 0.3);
+}
+
+ul li strong {
+    color: var(--color-accent-gold);
+}
+
+/* Animation de pulsation magique */
+@keyframes magicPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 8px var(--color-accent-gold-glow),
+            0 0 15px rgba(212, 175, 55, 0.2),
+            inset 0 0 4px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 12px var(--color-accent-gold-glow),
+            0 0 25px rgba(212, 175, 55, 0.3),
+            inset 0 0 6px rgba(212, 175, 55, 0.4);
+    }
+}
+
+/* === TABLEAUX / CARTES GRID === */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 30px 0;
+}
+
+table th {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-accent-gold);
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, #1a2030 100%);
+    padding: 20px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border-gold);
+}
+
+table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+table td {
+    flex: 0 1 auto;
+    min-width: 140px;
+    max-width: 180px;
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border-gold);
+    padding: 20px 15px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: var(--transition-smooth);
+    cursor: default;
+}
+
+table td:hover {
+    background: var(--color-bg-card-hover);
+    border-color: var(--color-accent-gold);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 0 20px var(--color-accent-gold-glow);
+}
+
+/* Images dans les cellules */
+table td img {
+    display: block;
+    margin: 0 auto 10px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+table td:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--color-accent-gold-glow));
+}
+
+/* Liens dans les cellules */
+table td a {
+    display: block;
+    text-decoration: none;
+}
+
+/* === IFRAME VIDÉO RESPONSIVE === */
+iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: var(--border-radius);
+    margin: 30px auto;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(74, 144, 217, 0.1);
+}
+
+/* === LIENS GÉNÉRAUX === */
+a {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+a:hover {
+    color: var(--color-accent-gold);
+    text-shadow: 0 0 10px var(--color-accent-gold-glow);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    body {
+        padding: 15px 20px 40px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+        padding: 15px 0;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+    }
+    
+    p {
+        text-align: left;
+        font-size: 0.95rem;
+    }
+    
+    ul li {
+        padding-left: 30px;
+        font-size: 0.95rem;
+    }
+    
+    ul li::before {
+        width: 14px;
+        height: 14px;
+        top: 5px;
+    }
+    
+    table tr {
+        gap: 15px;
+    }
+    
+    table td {
+        min-width: 120px;
+        padding: 15px 10px;
+        font-size: 0.9rem;
+    }
+    
+    table td img {
+        max-width: 80px;
+        max-height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px 15px 30px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+        border-left-width: 3px;
+    }
+    
+    table td {
+        min-width: 100px;
+        max-width: 140px;
+        padding: 12px 8px;
+    }
+    
+    table td img {
+        max-width: 70px;
+        max-height: 70px;
+    }
+    
+    ul li::before {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* === SUPPRESSION DES BR INUTILES (via CSS) === */
+br + br {
+    display: none;
 }
